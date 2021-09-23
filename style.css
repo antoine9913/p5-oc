@@ -1,0 +1,113 @@
+body{
+    background-color: antiquewhite;
+    margin: 0;
+}
+
+header{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.header-nav{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 90%;
+    background-color: #eccca7;
+    border-radius: 20px;
+    margin: 20px 0;
+}
+
+.header-nav-logo{
+    margin: 10px 0 10px 60px;
+}
+
+.header-nav-logo h1{
+    margin: 0;
+    font-size: 3em;
+}
+
+.header-nav-panier{
+    margin: 10px 60px 10px 0;
+}
+
+.header-nav-panier a{
+font-size: 2em;
+color: black;
+}
+
+.bandeau-oursons{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.bandeau-oursons img{
+    width: 100%;
+    object-fit: cover;
+    height: 300px;
+    opacity: 75%;
+    width: 90%;
+    border-radius: 20px;
+}
+
+.bandeau-oursons-texte{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.bandeau-oursons-texte h2{
+    font-size: 2em;
+}
+
+.bandeau-oursons-texte p{
+    font-size: 1.6em;
+}
+
+main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#container-products{
+    width: 90%;
+    background-color: #eccca7;
+    border-radius: 20px;
+    margin: 20px 0;
+}
+
+#container-products h3{
+    margin: 10px;
+    text-align: center;
+    font-size: 2em;
+}
+
+footer{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-footer{
+    border-radius: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    background-color: #eccca7;
+    width: 90%;
+    height: 60px;
+    align-items: center;
+}
+
+.nav-footer-link{
+    color: black;
+    font-size: 1.2em;
+    text-decoration: none;
+}
