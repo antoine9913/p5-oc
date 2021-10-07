@@ -30,6 +30,11 @@ header{
     font-size: 3em;
 }
 
+.header-nav-logo h1 a {
+    color: black;
+    text-decoration: none;
+}
+
 .header-nav-panier{
     margin: 10px 60px 10px 0;
 }
@@ -147,4 +152,12 @@ footer{
     color: black;
     font-size: 1.2em;
     text-decoration: none;
+}
+
+
+/* ------------------------- */
+
+
+.containerProduct{
+    display: flex;
 }
