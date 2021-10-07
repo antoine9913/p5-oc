@@ -31,8 +31,7 @@ window.onload = () => {
     };
 
     let product_id = getIdFromUrl();
-    const getProductAttributeList = fetch(
-        "http://localhost:3000/api/teddies/" + product_id,
+    fetch("http://localhost:3000/api/teddies/" + product_id,
         {
             method: "GET",
         }
@@ -42,8 +41,6 @@ window.onload = () => {
         })
         .then(function (product) {
             console.log(product)
-            let oursons = new Oursons(product)
-            contentProduct(oursons)
         })
 
         .catch(function (err) {
