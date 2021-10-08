@@ -135,6 +135,7 @@ footer{
     display:flex;
     align-items: center;
     justify-content: center;
+    margin: 20px 0;
 }
 
 .nav-footer{
@@ -157,7 +158,39 @@ footer{
 
 /* ------------------------- */
 
-
-.containerProduct{
+#containerProduct {
     display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#cardsProduct{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    width: 25%;
+    background-color: #eccca7;
+    border-radius: 20px;
+    margin: 20px 0;
+}
+
+#cardsProduct img{
+    margin: 10px;
+    border-radius: 20px 20px 0 0;
+    object-fit: cover;
+}
+
+.description {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px;
+}
+
+.description h3 {
+    margin: 0;
+}
+
+.description a {
+    margin: 10px 0 0 0;
 }
