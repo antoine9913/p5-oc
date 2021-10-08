@@ -1,3 +1,7 @@
 #cardsProducts {
     margin: 20px 0;
 }
+
+#cardsProduct{
+    width: 50%;
+}
