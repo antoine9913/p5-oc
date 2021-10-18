@@ -4,9 +4,94 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../css/small.css">
+    <link rel="stylesheet" href="../css/xsmall.css">
+    <script src="https://kit.fontawesome.com/c4fb02f0fe.js" crossorigin="anonymous"></script>
     <title>OrinOursons-Panier</title>
 </head>
 <body>
-</body>
+    <header>
+        <div class="header-nav">
+            <div class="header-nav-logo">
+                <h1><a href="../index.html">OrinOursons</a></H1>
+            </div>
+        </div>
+    </header>
+  
+    <section class="recap-commande">
+      <table id="containerProduct">
+  
+        <thead>
+          <tr>
+            <th class="srcimage">Photos</th>
+            <th>Nom</th>
+            <th>Prix Unitaire</th>
+            <th>Quantitée</th>
+            <th>Supprimer</th>
+            <th>Prix Total</th>
+          </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <td>TOTAL</td>
+                <td id="prixTotal"></td>
+            </tr>
+        </tfoot>
+        
+      </table>
+  
+      <button id="viderPanier" class="viderPanier">Vider tous le Panier </button>
+    </section>
+  
+    <form action="#" method="POST" id="form">
+      <div>
+        <input type="radio" id="Mr" name="drone" value="Mr" checked>
+        <label for="Mr">Mr</label>
+  
+        <input type="radio" id="Mme" name="drone" value="Mme">
+        <label for="Mme">Mme</label>
+      </div>
+  
+      <div>
+        <label for="nom">Nom *:</label><br />
+        <input type="text" id="nom" name="nom" required="required" placeholder="Leo" />
+      </div>
+  
+      <div>
+        <label for="prenom">Prenom *:</label><br />
+        <input type="text" id="prenom" name="prenom" required="required" placeholder="Martin" />
+      </div>
+  
+      <div>
+        <label for="adresse">Adresse *:</label><br />
+        <input type="text" id="adresse" name="adresse" required="required" placeholder="3 rue des cerises" />
+      </div>
+  
+      <div>
+        <label for="ville">Ville *:</label><br />
+        <input type="text" id="ville" name="text" required="required" placeholder=" Nice "
+          pattern="^[a-zA-Z]{1}[a-zA-Z'À-ÿ -]+$" />
+      </div>
+  
+      <div>
+        <label for="email">E-mail *:</label><br />
+        <input type="email" id="email" name="email" required="required" placeholder="martin@yahoo.fr"
+          pattern="[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+.[a-zA-Z.]{2,15}" />
+      </div>
+  
+      <input type="submit" value="Commander" id="envoiFormulaire" />
+  
+      <p>* Champ Obligatoire</p>
+    </form>
+  
+    <footer>
+        <div class="nav-footer">
+            <a href="#" class="nav-footer-link">Contact</a>
+            <a href="#" class="nav-footer-link">Mentions légals</a>
+        </div>
+    </footer>
+    <script src="../js/oursons.js"></script>
+    <script src="../js/panier.js"></script>
+  </body>
 </html>

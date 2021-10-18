@@ -5,7 +5,7 @@ class Oursons {
         imageUrl,
         price,
         description,
-        color,
+        colors,
         quantity
     }) {
         this.name = name;
@@ -13,7 +13,7 @@ class Oursons {
         this.imageUrl = imageUrl;
         this.price = price;
         this.description = description;
-        this.color = color;
+        this.colors = colors;
         this.quantity = parseInt(quantity, 10);
     }
 };
