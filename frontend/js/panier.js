@@ -4,7 +4,7 @@
 let ourson = JSON.parse(localStorage.getItem('panier')) ? JSON.parse(localStorage.getItem("panier")) : [];
 
 //EMPLACEMENT DU HTML
-let container = document.getElementById("containerProduct");
+let container = document.getElementById("containerCart");
 
 // INITIALISE LE PRIX TOTAL DU PANIER A 0
 let prixPanier = 0;

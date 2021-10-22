@@ -195,3 +195,42 @@ footer{
 .description a {
     margin: 10px 0 0 0;
 }
+
+
+/*-------------------------------------------------*/
+
+
+.recap-commande {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#containerCart {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    border: 1px solid black;
+}
+
+thead {
+    width: 100%;
+}
+
+tbody {
+    height: 100px;
+    width: 100%;
+}
+
+td {
+    width: 212px;
+    text-align: center;
+}
+
+th {
+    width: 212px;
+}
+
+.srcimage img {
+    width: 100px;
+}
