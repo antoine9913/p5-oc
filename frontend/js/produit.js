@@ -30,7 +30,6 @@ window.onload = () => {
                     <h3>${oursons.name}</h3>
                     <p>${oursons.description}</p>
                     <select class="color" id="colors">
-                    <option>choix couleurs</option>
                     </select>
                     <p class="prix"> Prix Unitaire : ${oursons.price / 100}€</p>
                     <select class="quantite" id="quantity">
