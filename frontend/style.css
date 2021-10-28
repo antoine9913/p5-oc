@@ -1,13 +1,16 @@
 body{
     background-color: antiquewhite;
     margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 header{
     display: flex;
     flex-direction: column;
     align-items: center;
-
+    width: 100%;
 }
 
 .header-nav{
@@ -49,10 +52,10 @@ color: black;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    width: 100%;
 }
 
 .bandeau-oursons img{
-    width: 100%;
     object-fit: cover;
     height: 300px;
     opacity: 75%;
@@ -136,6 +139,7 @@ footer{
     align-items: center;
     justify-content: center;
     margin: 20px 0;
+    width: 100%;
 }
 
 .nav-footer{
@@ -196,6 +200,40 @@ footer{
     margin: 10px 0 0 0;
 }
 
+#colors {
+    background-color: antiquewhite;
+    outline: none;
+    border-radius: 20px;
+    font-size: 1.2em;
+    border: 2px solid #53180a;
+    padding: 4px;
+    width: 165px;
+    cursor: pointer;
+}
+
+
+#quantity {
+    background-color: antiquewhite;
+    outline: none;
+    border-radius: 20px;
+    font-size: 1.2em;
+    border: 2px solid #53180a;
+    padding: 4px;
+    cursor: pointer;
+}
+
+#panier {
+    background-color: antiquewhite;
+    outline: none;
+    border-radius: 20px;
+    font-size: 1.2em;
+    border: 2px solid #53180a;
+    padding: 4px;
+    width: 165px;
+    margin: 20px;
+    cursor: pointer;
+}
+
 
 /*-------------------------------------------------*/
 
@@ -204,27 +242,42 @@ footer{
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 100%;
 }
 
 #containerCart {
     display: flex;
     flex-direction: column;
     width: 90%;
-    border: 1px solid black;
+    background-color: #eccca7;
+    border-radius: 20px;
+    margin: 20px 0 0 0;
+    color: black;
+    align-items: center;
 }
 
 thead {
+    margin: 20px 0;
     width: 100%;
 }
 
 tbody {
-    height: 100px;
     width: 100%;
+}
+
+
+tfoot {
+    margin: 20px 0;
 }
 
 td {
     width: 212px;
     text-align: center;
+}
+
+a {
+    color: black;
+    outline: none;
 }
 
 th {
@@ -233,4 +286,45 @@ th {
 
 .srcimage img {
     width: 100px;
+}
+
+#viderPanier {
+    background-color: #eccca7;
+    outline: none;
+    border-radius: 20px;
+    font-size: 1.2em;
+    border: 2px solid antiquewhite;
+    padding: 20px;
+    margin: 30px 0 20px 0;
+    cursor: pointer;
+}
+
+#form {
+    margin: 20px 0;
+    display: flex;
+    flex-direction: column;
+    height: 500px;
+    background-color: #eccca7;
+    width: 300px;
+    align-items: center;
+    justify-content: space-evenly;
+    border-radius: 20px;
+}
+
+input {
+    background-color: antiquewhite;
+    border: 2px solid #53180a;
+    border-radius: 20px;
+    outline: none;
+    cursor: pointer;
+}
+
+#confirm {
+    background-color: #eccca7;
+    border-radius: 20px;
+    padding: 0 20px 20px 20px;
+}
+
+hr {
+    border: 1px solid #53180a;
 }

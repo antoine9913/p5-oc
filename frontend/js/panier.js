@@ -4,7 +4,7 @@
 let ourson = JSON.parse(localStorage.getItem('panier')) ? JSON.parse(localStorage.getItem("panier")) : [];
 
 //EMPLACEMENT DU HTML
-let container = document.getElementById("containerCart");
+let container = document.getElementById("containerCartBody");
 
 // INITIALISE LE PRIX TOTAL DU PANIER A 0
 let prixPanier = 0;
@@ -41,7 +41,7 @@ ourson.forEach((oursons, i) => {
     // BOUCLE INCREMENT ID PRODUIT
 
     for (let i = 0; i < oursons.quantity; i++) {
-        addIdBasket.push(oursons._id);
+        addIdBasket.push(oursons.id);
     }
 });
 
@@ -80,7 +80,7 @@ function deleteBasket() {
 
 function sendOrder() {
     let form = document.getElementById("form");
-    if (form.reportValidity() == true && addIdBasket.length > 0) {
+    if (form.reportValidity() === true && addIdBasket.length > 0) {
         let contact = {
             'firstName': document.getElementById("nom").value,
             'lastName': document.getElementById("prenom").value,
@@ -88,6 +88,7 @@ function sendOrder() {
             'city': document.getElementById("ville").value,
             'email': document.getElementById("email").value
         };
+        console.log(contact)
 
         let products = addIdBasket;
 
@@ -95,6 +96,7 @@ function sendOrder() {
             contact,
             products,
         });
+        console.log(formulaireClient)
 
         // APEL API AVEC FETCH // ENVOIE DES DONNEES AVEC POST 
         fetch('http://localhost:3000/api/teddies/order', {
