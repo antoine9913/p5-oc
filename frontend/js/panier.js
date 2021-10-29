@@ -96,7 +96,6 @@ function sendOrder() {
             contact,
             products,
         });
-        console.log(formulaireClient)
 
         // APEL API AVEC FETCH // ENVOIE DES DONNEES AVEC POST 
         fetch('http://localhost:3000/api/teddies/order', {
