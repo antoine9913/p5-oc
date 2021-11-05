@@ -1,4 +1,4 @@
-let allProducts = document.getElementById("allproducts");
+const allProducts = document.getElementById("allproducts");
 
 const contentProduct = oursons => {
     allproducts.innerHTML += `

@@ -1,10 +1,10 @@
 //// GESTION DU PANIER////
 
 //RECUPERATION DU PANIER DANS LE LOCAL STORAGE 
-let ourson = JSON.parse(localStorage.getItem('panier')) ? JSON.parse(localStorage.getItem("panier")) : [];
+const ourson = JSON.parse(localStorage.getItem('panier')) ? JSON.parse(localStorage.getItem("panier")) : [];
 
 //EMPLACEMENT DU HTML
-let container = document.getElementById("containerCartBody");
+const container = document.getElementById("containerCartBody");
 
 // INITIALISE LE PRIX TOTAL DU PANIER A 0
 let prixPanier = 0;

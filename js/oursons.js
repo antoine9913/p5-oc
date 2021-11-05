@@ -1,19 +1,19 @@
 class Oursons {
     constructor({
         name,
-        _id,
         imageUrl,
         price,
+        _id,
         description,
         colors,
-        quantity
+        quantity,
     }) {
         this.name = name;
-        this.id = _id;
         this.imageUrl = imageUrl;
         this.price = price;
+        this.id = _id;
         this.description = description;
         this.colors = colors;
-        this.quantity = parseInt(quantity, 10);
+        this.quantity = parseInt(quantity, 10); // transforme chaine de caractère en nombre
     }
 };

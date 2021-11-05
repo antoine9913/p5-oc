@@ -97,7 +97,8 @@ window.onload = () => {
             return response.json();
         })
         .then(function (product) {
-            contentProduct(product);
+            let oursons = new Oursons(product)
+            contentProduct(oursons);
         })
 
         .catch(function (err) {
