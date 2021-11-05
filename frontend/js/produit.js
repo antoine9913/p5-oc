@@ -59,6 +59,7 @@ window.onload = () => {
 
         document.getElementById('panier').addEventListener('click', function () {
             addProductPanier(oursons)
+            window.location.reload()
         });
     };
 
@@ -96,8 +97,7 @@ window.onload = () => {
             return response.json();
         })
         .then(function (product) {
-            let oursons = new Oursons(product)
-            contentProduct(oursons);
+            contentProduct(product);
         })
 
         .catch(function (err) {

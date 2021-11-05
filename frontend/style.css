@@ -40,11 +40,23 @@ header{
 
 .header-nav-panier{
     margin: 10px 60px 10px 0;
+    display: flex;
+    align-items: flex-end;
 }
 
 .header-nav-panier a{
 font-size: 2em;
 color: black;
+}
+
+.number-cart {
+    padding: 3px;
+    font-size: 01em;
+    background-color: #faebd7;
+    border: 2px solid #53180a;
+    border-radius: 15px;
+    text-align: center;
+    width: 18px;
 }
 
 .bandeau-oursons{
@@ -166,6 +178,7 @@ footer{
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 90%;
 }
 
 #cardsProduct{
@@ -275,9 +288,22 @@ td {
     text-align: center;
 }
 
+.add-and-remove {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5em;
+}
+
+.add-oursons-logo {
+    margin: 0 10px;
+}
+
 a {
     color: black;
     outline: none;
+    text-decoration: none;
 }
 
 th {

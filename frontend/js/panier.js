@@ -30,8 +30,9 @@ ourson.forEach((oursons, i) => {
         <td>${oursons.name}</td>
         <td>${oursons.price / 100} €</td>
         <td>${oursons.quantity}</td>
-        <td><a href="#" class="deleteOursons" data-id="${i}"> <i class="fas fa-trash-alt"></i></a></td>
+        <td><div class="add-and-remove"><a href="#" class="addOursons" data-id="${i}"> <p class="add-oursons-logo">+</p> </a> <p class="add-oursons-logo">/</p> <a href="#" class="deleteOursons" data-id="${i}"> <p class="add-oursons-logo">-</p> </a></div></td>
         <td >${oursons.quantity * oursons.price / 100} €</td>
+        <td><a href="#" class="deleteLineOursons" data-id="${i}"> <i class="fas fa-trash-alt"></i></a></td>
     </tr>
     `
     //APPEL FONCTION
@@ -45,6 +46,25 @@ ourson.forEach((oursons, i) => {
     }
 });
 
+// AJOUTER 1 PRODUIT DU PANIER
+
+function addOursons(id) {
+    let oursons = ourson[id];
+    if (oursons.quantity >= 1) {
+        oursons.quantity++;
+    } else {
+        oursons.splice(id, 1);
+    }
+    localStorage.setItem('panier', JSON.stringify(ourson));
+    window.location.reload()
+};
+
+document.querySelectorAll('.addOursons').forEach(delBtn => {
+    delBtn.addEventListener('click', () => addOursons(delBtn.dataset.id))
+});
+
+// ENLEVER 1 PRODUIT DU PANIER
+
 function deleteOursons(id) {
     let oursons = ourson[id];
     if (oursons.quantity > 1) {
@@ -56,16 +76,33 @@ function deleteOursons(id) {
     window.location.reload()
 };
 
-// SUPPRIMER 1 PRODUIT DU PANIER
-
 document.querySelectorAll('.deleteOursons').forEach(delBtn => {
     delBtn.addEventListener('click', () => deleteOursons(delBtn.dataset.id))
 });
 
+// SUPPRIMER 1 PRODUIT DU PANIER
+
+function deleteLineOursons(e, ourson) {
+    let index = e.target.classList[1].slice(-1);
+    ourson.splice(index, 1);
+    localStorage.setItem('panier', JSON.stringify(ourson));
+
+    if (ourson.length === 0) {
+        localStorage.removeItem('paner');
+    }
+    window.location.reload()
+}
+
+document.querySelectorAll(".deleteLineOursons").forEach((btn) => {
+    btn.addEventListener('click', e => { deleteLineOursons(e, ourson) });
+});
+
+
+//FONCTION SUPPRIME TOUT LE PANIER
+
 let viderPanier = document.getElementById('viderPanier')
 viderPanier.addEventListener('click', deleteBasket);
 
-//FONCTION SUPPRIME TOUT LE PANIER
 
 function deleteBasket() {
     if (ourson == null) {
