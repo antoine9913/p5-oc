@@ -49,7 +49,7 @@ ourson.forEach((oursons, i) => {
 // AJOUTER 1 PRODUIT DU PANIER
 
 function addOursons(id) {
-    let oursons = ourson[id];
+    const oursons = ourson[id];
     if (oursons.quantity >= 1) {
         oursons.quantity++;
     } else {
@@ -66,7 +66,7 @@ document.querySelectorAll('.addOursons').forEach(delBtn => {
 // ENLEVER 1 PRODUIT DU PANIER
 
 function deleteOursons(id) {
-    let oursons = ourson[id];
+    const oursons = ourson[id];
     if (oursons.quantity > 1) {
         oursons.quantity--;
     } else {
@@ -83,7 +83,7 @@ document.querySelectorAll('.deleteOursons').forEach(delBtn => {
 // SUPPRIMER 1 PRODUIT DU PANIER
 
 function deleteLineOursons(e, ourson) {
-    let index = e.target.classList[1].slice(-1);
+    const index = e.target.classList[1].slice(-1);
     ourson.splice(index, 1);
     localStorage.setItem('panier', JSON.stringify(ourson));
 
@@ -100,7 +100,7 @@ document.querySelectorAll(".deleteLineOursons").forEach((btn) => {
 
 //FONCTION SUPPRIME TOUT LE PANIER
 
-let viderPanier = document.getElementById('viderPanier')
+const viderPanier = document.getElementById('viderPanier')
 viderPanier.addEventListener('click', deleteBasket);
 
 
@@ -116,9 +116,9 @@ function deleteBasket() {
 //// GESTION DU FORMULAIRE ////
 
 function sendOrder() {
-    let form = document.getElementById("form");
+    const form = document.getElementById("form");
     if (form.reportValidity() === true && addIdBasket.length > 0) {
-        let contact = {
+        const contact = {
             'firstName': document.getElementById("nom").value,
             'lastName': document.getElementById("prenom").value,
             'address': document.getElementById("adresse").value,
@@ -126,9 +126,9 @@ function sendOrder() {
             'email': document.getElementById("email").value
         };
 
-        let products = addIdBasket;
+        const products = addIdBasket;
 
-        let formulaireClient = JSON.stringify({
+        const formulaireClient = JSON.stringify({
             contact,
             products,
         });
@@ -159,7 +159,7 @@ function sendOrder() {
     };
 }
 
-let envoiFormulaire = document.getElementById("envoiFormulaire");
+const envoiFormulaire = document.getElementById("envoiFormulaire");
 
 envoiFormulaire.addEventListener('click', function (event) {
     event.preventDefault();
