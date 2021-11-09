@@ -17,7 +17,7 @@ let addIdBasket = [];
 function priceTotalcart(oursons) {
     prixPanier += oursons.quantity * oursons.price / 100;
     //AFFICHE PRIX TOTAL DU PANIER // ENVOI AU LOCALSTORAGE
-    let prixTotal = document.getElementById('prixTotal').textContent = prixPanier + "€";
+    const prixTotal = document.getElementById('prixTotal').textContent = prixPanier + "€";
     localStorage.setItem('prixTotal', JSON.stringify(prixTotal));
 };
 

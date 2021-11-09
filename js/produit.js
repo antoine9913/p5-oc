@@ -8,11 +8,11 @@ window.onload = () => {
         const product_id = urlParams.get("id");
         return product_id;
     };
-    let product_id = getIdFromUrl();
+    const product_id = getIdFromUrl();
 
     //-------------------Emplacement HTML--------------------------------
 
-    let container = document.getElementById("containerProduct");
+    const container = document.getElementById("containerProduct");
 
     //-------------------fonction d'envoie au local storage-----------------
 
@@ -52,7 +52,7 @@ window.onload = () => {
 
         //----------------------Options-----------------------
 
-        for (let colors of oursons.colors) {
+        for (const colors of oursons.colors) {
             document.getElementById('colors').innerHTML +=
                 `<option value="1">${colors}</option>`
         }
@@ -70,7 +70,7 @@ window.onload = () => {
         oursons.quantity = parseInt(document.getElementById('quantity').value);
 
         //------------------------recuperation du panier-------------------------------
-        let panier = localStorage.getItem('panier') ? JSON.parse(localStorage.getItem('panier')) : [];
+        const panier = localStorage.getItem('panier') ? JSON.parse(localStorage.getItem('panier')) : [];
 
         //-----------------------parcourir le panier-------------------------------
         let oursonsExistInCart = false;
