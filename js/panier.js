@@ -42,7 +42,7 @@ ourson.forEach((oursons, i) => {
     // BOUCLE INCREMENT ID PRODUIT
 
     for (let i = 0; i < oursons.quantity; i++) {
-        addIdBasket.push(oursons.id);
+        addIdBasket.push(oursons._id);
     }
 });
 
@@ -88,7 +88,7 @@ function deleteLineOursons(e, ourson) {
     localStorage.setItem('panier', JSON.stringify(ourson));
 
     if (ourson.length === 0) {
-        localStorage.removeItem('paner');
+        localStorage.removeItem('panier');
     }
     window.location.reload()
 }
@@ -125,7 +125,6 @@ function sendOrder() {
             'city': document.getElementById("ville").value,
             'email': document.getElementById("email").value
         };
-        console.log(contact)
 
         let products = addIdBasket;
 

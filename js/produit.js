@@ -44,7 +44,9 @@ window.onload = () => {
                         <option value="9">9</option>
                         <option value="10">10</option>
                     </select>
+                    <a href="panier.html">
                     <button type="submit" id="panier" value="submit"> Ajouter au panier </button>
+                    <a/>
                     </div>
         </div> `;
 
@@ -75,7 +77,7 @@ window.onload = () => {
         for (let i = 0; i < panier.length; i++) {
             let product = panier[i];
             //--------------------------------si un produit existe--------------------------------
-            if (product.id === oursons.id) {
+            if (product._id === oursons._id) {
                 oursonsExistInCart = i;
             }
         };
@@ -97,8 +99,7 @@ window.onload = () => {
             return response.json();
         })
         .then(function (product) {
-            let oursons = new Oursons(product)
-            contentProduct(oursons);
+            contentProduct(product);
         })
 
         .catch(function (err) {

@@ -3,7 +3,7 @@ const allProducts = document.getElementById("allproducts");
 const contentProduct = oursons => {
     allproducts.innerHTML += `
     <article id="cardsProducts" class="product">
-        <a href="html/produit.html?id=${oursons.id}">
+        <a href="html/produit.html?id=${oursons._id}">
             <img src="${oursons.imageUrl}" alt="photos produits" />
             <div class="descriptionBloc">
                 <h3> ${oursons.name}</h3>
@@ -18,8 +18,7 @@ fetch("http://localhost:3000/api/teddies")
     .then(Response => Response.json())
     .then(function (productList) {
         for (let product of productList) {
-            let oursons = new Oursons(product)
-            contentProduct(oursons);
+            contentProduct(product);
         }
     })
 
