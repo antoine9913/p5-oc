@@ -12,17 +12,17 @@ function display() {
 
 
     // RECUPERATION DU PRIX TOTAL
-    let prixTotal = JSON.parse(localStorage.getItem("prixTotal"));
+    let totalPrice = JSON.parse(localStorage.getItem("totalPrice"));
 
-    let confirmation = document.getElementById("confirm");
+    let confirm = document.getElementById("confirm");
 
-    confirmation.innerHTML += `
+    confirm.innerHTML += `
         <p>
         Merci  ${contact.firstName} ${contact.lastName} 
         </p>
         <hr>
         <p>Nous avons bien reçu votre commande N° ${orderId} </br>
-        D'un montant de :${prixTotal}  </br>
+        D'un montant de :${totalPrice}  </br>
         </p>
         Un email vous sera envoyer à l'adresse : </br> ${contact.email} a l'envoi de votre commande  
     `

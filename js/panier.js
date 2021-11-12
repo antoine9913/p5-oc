@@ -1,111 +1,110 @@
 //// GESTION DU PANIER////
 
 //RECUPERATION DU PANIER DANS LE LOCAL STORAGE 
-const ourson = JSON.parse(localStorage.getItem('panier')) ? JSON.parse(localStorage.getItem("panier")) : [];
-
+const pickCart = JSON.parse(localStorage.getItem('cart')) ? JSON.parse(localStorage.getItem("cart")) : [];
 //EMPLACEMENT DU HTML
 const container = document.getElementById("containerCartBody");
 
 // INITIALISE LE PRIX TOTAL DU PANIER A 0
-let prixPanier = 0;
+let priceCart = 0;
 
 //RECUPERATION ID PRODUIT
 let addIdBasket = [];
 
 //FONCTION CALCUL PRIX TOTAL DU PANIER ET ENVOIE AU LOCAL STORAGE
 
-function priceTotalcart(oursons) {
-    prixPanier += oursons.quantity * oursons.price / 100;
+function priceTotalcart(bears) {
+    priceCart += bears.quantity * bears.price / 100;
     //AFFICHE PRIX TOTAL DU PANIER // ENVOI AU LOCALSTORAGE
-    const prixTotal = document.getElementById('prixTotal').textContent = prixPanier + "€";
-    localStorage.setItem('prixTotal', JSON.stringify(prixTotal));
+    const totalPrice = document.getElementById('totalPrice').textContent = priceCart + "€";
+    localStorage.setItem('totalPrice', JSON.stringify(totalPrice));
 };
 
 //BOUCLE SUR LE PANIER
 
-ourson.forEach((oursons, i) => {
+pickCart.forEach((bears, i) => {
     container.innerHTML += `
     <tr>
-        <td class="srcimage"><img src="${oursons.imageUrl}" alt="" /></td>
-        <td>${oursons.name}</td>
-        <td>${oursons.price / 100} €</td>
-        <td>${oursons.quantity}</td>
-        <td><div class="add-and-remove"><a href="#" class="addOursons" data-id="${i}"> <p class="add-oursons-logo">+</p> </a> <p class="add-oursons-logo">/</p> <a href="#" class="deleteOursons" data-id="${i}"> <p class="add-oursons-logo">-</p> </a></div></td>
-        <td >${oursons.quantity * oursons.price / 100} €</td>
-        <td><a href="#" class="deleteLineOursons" data-id="${i}"> <i class="fas fa-trash-alt"></i></a></td>
+        <td class="srcimage"><img src="${bears.imageUrl}" alt="" /></td>
+        <td>${bears.name}</td>
+        <td>${bears.price / 100} €</td>
+        <td>${bears.quantity}</td>
+        <td><div class="add-and-remove"><a href="#" class="addBears" data-id="${i}"> <p class="add-oursons-logo">+</p> </a> <p class="add-oursons-logo">/</p> <a href="#" class="deleteBears" data-id="${i}"> <p class="add-oursons-logo">-</p> </a></div></td>
+        <td >${bears.quantity * bears.price / 100} €</td>
+        <td><a href="#" class="deleteLineBears" data-id="${i}"> <i class="fas fa-trash-alt"></i></a></td>
     </tr>
     `
     //APPEL FONCTION
 
-    priceTotalcart(oursons);
+    priceTotalcart(bears);
 
     // BOUCLE INCREMENT ID PRODUIT
 
-    for (let i = 0; i < oursons.quantity; i++) {
-        addIdBasket.push(oursons._id);
+    for (let i = 0; i < bears.quantity; i++) {
+        addIdBasket.push(bears._id);
     }
 });
 
 // AJOUTER 1 PRODUIT DU PANIER
 
-function addOursons(id) {
-    const oursons = ourson[id];
-    if (oursons.quantity >= 1) {
-        oursons.quantity++;
+function addBears(id) {
+    const bears = pickCart[id];
+    if (bears.quantity >= 1) {
+        bears.quantity++;
     } else {
-        oursons.splice(id, 1);
+        bears.splice(id, 1);
     }
-    localStorage.setItem('panier', JSON.stringify(ourson));
+    localStorage.setItem('cart', JSON.stringify(pickCart));
     window.location.reload()
 };
 
-document.querySelectorAll('.addOursons').forEach(delBtn => {
-    delBtn.addEventListener('click', () => addOursons(delBtn.dataset.id))
+document.querySelectorAll('.addBears').forEach(delBtn => {
+    delBtn.addEventListener('click', () => addBears(delBtn.dataset.id))
 });
 
 // ENLEVER 1 PRODUIT DU PANIER
 
-function deleteOursons(id) {
-    const oursons = ourson[id];
-    if (oursons.quantity > 1) {
-        oursons.quantity--;
+function deleteBears(id) {
+    const bears = pickCart[id];
+    if (bears.quantity > 1) {
+        bears.quantity--;
     } else {
-        oursons.splice(id, 1);
+        bears.splice(id, 1);
     }
-    localStorage.setItem('panier', JSON.stringify(ourson));
+    localStorage.setItem('cart', JSON.stringify(pickCart));
     window.location.reload()
 };
 
-document.querySelectorAll('.deleteOursons').forEach(delBtn => {
-    delBtn.addEventListener('click', () => deleteOursons(delBtn.dataset.id))
+document.querySelectorAll('.deleteBears').forEach(delBtn => {
+    delBtn.addEventListener('click', () => deleteBears(delBtn.dataset.id))
 });
 
 // SUPPRIMER 1 PRODUIT DU PANIER
 
-function deleteLineOursons(e, ourson) {
+function deleteLineBears(e, pickCart) {
     const index = e.target.classList[1].slice(-1);
-    ourson.splice(index, 1);
-    localStorage.setItem('panier', JSON.stringify(ourson));
+    pickCart.splice(index, 1);
+    localStorage.setItem('cart', JSON.stringify(pickCart));
 
-    if (ourson.length === 0) {
-        localStorage.removeItem('panier');
+    if (pickCart.length === 0) {
+        localStorage.removeItem('cart');
     }
     window.location.reload()
 }
 
-document.querySelectorAll(".deleteLineOursons").forEach((btn) => {
-    btn.addEventListener('click', e => { deleteLineOursons(e, ourson) });
+document.querySelectorAll(".deleteLineBears").forEach((btn) => {
+    btn.addEventListener('click', e => { deleteLineBears(e, pickCart) });
 });
 
 
 //FONCTION SUPPRIME TOUT LE PANIER
 
-const viderPanier = document.getElementById('viderPanier')
-viderPanier.addEventListener('click', deleteBasket);
+const emptyCart = document.getElementById('emptyCart')
+emptyCart.addEventListener('click', deleteBasket);
 
 
 function deleteBasket() {
-    if (ourson == null) {
+    if (pickCart == null) {
     } else {
         container.remove();
         localStorage.clear();
@@ -128,7 +127,7 @@ function sendOrder() {
 
         const products = addIdBasket;
 
-        const formulaireClient = JSON.stringify({
+        const summonerForm = JSON.stringify({
             contact,
             products,
         });
@@ -140,7 +139,7 @@ function sendOrder() {
                 'content-type': "application/json"
             },
             mode: "cors",
-            body: formulaireClient
+            body: summonerForm
         })
             .then(function (response) {
                 return response.json()
@@ -159,9 +158,9 @@ function sendOrder() {
     };
 }
 
-const envoiFormulaire = document.getElementById("envoiFormulaire");
+const sendForm = document.getElementById("sendForm");
 
-envoiFormulaire.addEventListener('click', function (event) {
+sendForm.addEventListener('click', function (event) {
     event.preventDefault();
     sendOrder();
 });

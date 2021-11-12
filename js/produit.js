@@ -16,22 +16,22 @@ window.onload = () => {
 
     //-------------------fonction d'envoie au local storage-----------------
 
-    const addLocalStorage = panier => {
-        localStorage.setItem('panier', JSON.stringify(panier));
+    const addLocalStorage = cart => {
+        localStorage.setItem('cart', JSON.stringify(cart));
     };
 
     //-------------------inclus HTML---------------------------------------
 
-    const contentProduct = oursons => {
+    const contentProduct = bears => {
         container.innerHTML += `
         <div id="cardsProduct" class="oursons">
-                <img src="${oursons.imageUrl}" alt="" />
+                <img src="${bears.imageUrl}" alt="" />
                 <div class="description">
-                    <h3>${oursons.name}</h3>
-                    <p>${oursons.description}</p>
+                    <h3>${bears.name}</h3>
+                    <p>${bears.description}</p>
                     <select class="color" id="colors">
                     </select>
-                    <p class="prix"> Prix Unitaire : ${oursons.price / 100}€</p>
+                    <p class="prix"> Prix Unitaire : ${bears.price / 100}€</p>
                     <select class="quantite" id="quantity">
                         <option value="1">1</option>
                         <option value="2">2</option>
@@ -45,49 +45,49 @@ window.onload = () => {
                         <option value="10">10</option>
                     </select>
                     <a href="panier.html">
-                    <button type="submit" id="panier" value="submit"> Ajouter au panier </button>
+                    <button type="submit" id="cart" value="submit"> Ajouter au panier </button>
                     <a/>
                     </div>
         </div> `;
 
         //----------------------Options-----------------------
 
-        for (const colors of oursons.colors) {
+        for (const colors of bears.colors) {
             document.getElementById('colors').innerHTML +=
                 `<option value="1">${colors}</option>`
         }
 
         //------------------ecoute l'evenement au click---------------
 
-        document.getElementById('panier').addEventListener('click', function () {
-            addProductPanier(oursons)
+        document.getElementById('cart').addEventListener('click', function () {
+            addProductCart(bears)
             window.location.reload()
         });
     };
 
     //------------------------------------Ajouter au panier-------------------------------
-    const addProductPanier = oursons => {
-        oursons.quantity = parseInt(document.getElementById('quantity').value);
+    const addProductCart = bears => {
+        bears.quantity = parseInt(document.getElementById('quantity').value);
 
         //------------------------recuperation du panier-------------------------------
-        const panier = localStorage.getItem('panier') ? JSON.parse(localStorage.getItem('panier')) : [];
+        const cart = localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : [];
 
         //-----------------------parcourir le panier-------------------------------
-        let oursonsExistInCart = false;
-        for (let i = 0; i < panier.length; i++) {
-            let product = panier[i];
+        let bearsExistInCart = false;
+        for (let i = 0; i < cart.length; i++) {
+            let product = cart[i];
             //--------------------------------si un produit existe--------------------------------
-            if (product._id === oursons._id) {
-                oursonsExistInCart = i;
+            if (product._id === bears._id) {
+                bearsExistInCart = i;
             }
         };
         //--------------------------oursons existe dans le panier---------------------------------
-        if (false !== oursonsExistInCart) {
-            panier[oursonsExistInCart].quantity = parseInt(panier[oursonsExistInCart].quantity) + oursons.quantity;
+        if (false !== bearsExistInCart) {
+            cart[bearsExistInCart].quantity = parseInt(cart[bearsExistInCart].quantity) + bears.quantity;
         } else {
-            panier.push(oursons);
+            cart.push(bears);
         };
-        addLocalStorage(panier);
+        addLocalStorage(cart);
     };
 
     fetch("http://localhost:3000/api/teddies/" + product_id,

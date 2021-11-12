@@ -235,7 +235,7 @@ footer{
     cursor: pointer;
 }
 
-#panier {
+#cart {
     background-color: antiquewhite;
     outline: none;
     border-radius: 20px;
@@ -314,7 +314,7 @@ th {
     width: 100px;
 }
 
-#viderPanier {
+#emptyCart {
     background-color: #eccca7;
     outline: none;
     border-radius: 20px;
