@@ -13,8 +13,8 @@ let addIdBasket = [];
 
 //FONCTION CALCUL PRIX TOTAL DU PANIER ET ENVOIE AU LOCAL STORAGE
 
-function priceTotalcart(bears) {
-    priceCart += bears.quantity * bears.price / 100;
+function priceTotalcart(products) {
+    priceCart += products.quantity * products.price / 100;
     //AFFICHE PRIX TOTAL DU PANIER // ENVOI AU LOCALSTORAGE
     const totalPrice = document.getElementById('totalPrice').textContent = priceCart + "€";
     localStorage.setItem('totalPrice', JSON.stringify(totalPrice));
@@ -22,37 +22,37 @@ function priceTotalcart(bears) {
 
 //BOUCLE SUR LE PANIER
 
-pickCart.forEach((bears, i) => {
+pickCart.forEach((products, i) => {
     container.innerHTML += `
     <tr>
-        <td class="srcimage"><img src="${bears.imageUrl}" alt="" /></td>
-        <td>${bears.name}</td>
-        <td>${bears.price / 100} €</td>
-        <td>${bears.quantity}</td>
+        <td class="srcimage"><img src="${products.imageUrl}" alt="" /></td>
+        <td>${products.name}</td>
+        <td>${products.price / 100} €</td>
+        <td>${products.quantity}</td>
         <td><div class="add-and-remove"><a href="#" class="addBears" data-id="${i}"> <p class="add-oursons-logo">+</p> </a> <p class="add-oursons-logo">/</p> <a href="#" class="deleteBears" data-id="${i}"> <p class="add-oursons-logo">-</p> </a></div></td>
-        <td >${bears.quantity * bears.price / 100} €</td>
+        <td >${products.quantity * products.price / 100} €</td>
         <td><a href="#" class="deleteLineBears" data-id="${i}"> <i class="fas fa-trash-alt"></i></a></td>
     </tr>
     `
     //APPEL FONCTION
 
-    priceTotalcart(bears);
+    priceTotalcart(products);
 
     // BOUCLE INCREMENT ID PRODUIT
 
-    for (let i = 0; i < bears.quantity; i++) {
-        addIdBasket.push(bears._id);
+    for (let i = 0; i < products.quantity; i++) {
+        addIdBasket.push(products._id);
     }
 });
 
 // AJOUTER 1 PRODUIT DU PANIER
 
 function addBears(id) {
-    const bears = pickCart[id];
-    if (bears.quantity >= 1) {
-        bears.quantity++;
+    const products = pickCart[id];
+    if (products.quantity >= 1) {
+        products.quantity++;
     } else {
-        bears.splice(id, 1);
+        products.splice(id, 1);
     }
     localStorage.setItem('cart', JSON.stringify(pickCart));
     window.location.reload()
@@ -65,11 +65,11 @@ document.querySelectorAll('.addBears').forEach(delBtn => {
 // ENLEVER 1 PRODUIT DU PANIER
 
 function deleteBears(id) {
-    const bears = pickCart[id];
-    if (bears.quantity > 1) {
-        bears.quantity--;
+    const products = pickCart[id];
+    if (products.quantity > 1) {
+        products.quantity--;
     } else {
-        bears.splice(id, 1);
+        products.splice(id, 1);
     }
     localStorage.setItem('cart', JSON.stringify(pickCart));
     window.location.reload()
@@ -127,7 +127,7 @@ function sendOrder() {
 
         const products = addIdBasket;
 
-        const summonerForm = JSON.stringify({
+        const custommerForm = JSON.stringify({
             contact,
             products,
         });
@@ -139,7 +139,7 @@ function sendOrder() {
                 'content-type': "application/json"
             },
             mode: "cors",
-            body: summonerForm
+            body: custommerForm
         })
             .then(function (response) {
                 return response.json()

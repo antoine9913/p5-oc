@@ -22,16 +22,16 @@ window.onload = () => {
 
     //-------------------inclus HTML---------------------------------------
 
-    const contentProduct = bears => {
+    const contentProduct = products => {
         container.innerHTML += `
         <div id="cardsProduct" class="oursons">
-                <img src="${bears.imageUrl}" alt="" />
+                <img src="${products.imageUrl}" alt="" />
                 <div class="description">
-                    <h3>${bears.name}</h3>
-                    <p>${bears.description}</p>
+                    <h3>${products.name}</h3>
+                    <p>${products.description}</p>
                     <select class="color" id="colors">
                     </select>
-                    <p class="prix"> Prix Unitaire : ${bears.price / 100}€</p>
+                    <p class="prix"> Prix Unitaire : ${products.price / 100}€</p>
                     <select class="quantite" id="quantity">
                         <option value="1">1</option>
                         <option value="2">2</option>
@@ -52,7 +52,7 @@ window.onload = () => {
 
         //----------------------Options-----------------------
 
-        for (const colors of bears.colors) {
+        for (const colors of products.colors) {
             document.getElementById('colors').innerHTML +=
                 `<option value="1">${colors}</option>`
         }
@@ -60,32 +60,32 @@ window.onload = () => {
         //------------------ecoute l'evenement au click---------------
 
         document.getElementById('cart').addEventListener('click', function () {
-            addProductCart(bears)
+            addProductCart(products)
             window.location.reload()
         });
     };
 
     //------------------------------------Ajouter au panier-------------------------------
-    const addProductCart = bears => {
-        bears.quantity = parseInt(document.getElementById('quantity').value);
+    const addProductCart = products => {
+        products.quantity = parseInt(document.getElementById('quantity').value);
 
         //------------------------recuperation du panier-------------------------------
         const cart = localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : [];
 
         //-----------------------parcourir le panier-------------------------------
-        let bearsExistInCart = false;
+        let productsExistInCart = false;
         for (let i = 0; i < cart.length; i++) {
             let product = cart[i];
             //--------------------------------si un produit existe--------------------------------
-            if (product._id === bears._id) {
-                bearsExistInCart = i;
+            if (product._id === products._id) {
+                productsExistInCart = i;
             }
         };
         //--------------------------oursons existe dans le panier---------------------------------
-        if (false !== bearsExistInCart) {
-            cart[bearsExistInCart].quantity = parseInt(cart[bearsExistInCart].quantity) + bears.quantity;
+        if (false !== productsExistInCart) {
+            cart[productsExistInCart].quantity = parseInt(cart[productsExistInCart].quantity) + products.quantity;
         } else {
-            cart.push(bears);
+            cart.push(products);
         };
         addLocalStorage(cart);
     };
@@ -103,7 +103,7 @@ window.onload = () => {
         })
 
         .catch(function (err) {
-            console.log("Fetch Error")
+            console.error("Fetch Error")
             alert("Veuillez nous excuser le produit n'est pas disponible pour le moment")
         })
 };

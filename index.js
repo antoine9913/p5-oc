@@ -1,15 +1,15 @@
 const allProducts = document.getElementById("allproducts");
 
-const contentProduct = bears => {
+const contentProduct = products => {
     allproducts.innerHTML += `
     <article id="cardsProducts" class="product">
-        <a href="html/produit.html?id=${bears._id}">
-            <img src="${bears.imageUrl}" alt="photos produits" />
+        <a href="html/produit.html?id=${products._id}">
+            <img src="${products.imageUrl}" alt="photos produits" />
             <div class="descriptionBloc">
-                <h3> ${bears.name}</h3>
-                <p>${bears.price / 100}€</p>
+                <h3> ${products.name}</h3>
+                <p>${products.price / 100}€</p>
             </div>
-            <p>${bears.description}</p>
+            <p>${products.description}</p>
         </a>
     </article> `
 };
@@ -23,6 +23,6 @@ fetch("http://localhost:3000/api/teddies")
     })
 
     .catch(function (error) {
-        console.log("Fetch Error")
+        console.error("Fetch Error")
         alert("Veuillez nous excuser les produits ne sont pas disponible pour le moment")
     });

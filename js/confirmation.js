@@ -1,5 +1,3 @@
-
-
 // AFFICHAGE HTML
 function display() {
     //RECUPERATION DES DONNEES DE L URL

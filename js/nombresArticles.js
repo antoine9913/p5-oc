@@ -7,8 +7,8 @@ function numberOfArticleInCart() {
     if (localStorage.getItem("cart") !== null) {
         let keyNumber = JSON.parse(localStorage.getItem("cart"));
 
-        keyNumber.forEach((oursons) => {
-            number = number + oursons.quantity;
+        keyNumber.forEach((products) => {
+            number = number + products.quantity;
         });
     }
     div.textContent = number;
