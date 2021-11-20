@@ -3,7 +3,7 @@ const allProducts = document.getElementById("allproducts");
 const contentProduct = products => {
     allproducts.innerHTML += `
     <article id="cardsProducts" class="product">
-        <a href="html/produit.html?id=${products._id}">
+        <a href="html/product.html?id=${products._id}">
             <img src="${products.imageUrl}" alt="photos produits" />
             <div class="descriptionBloc">
                 <h3> ${products.name}</h3>

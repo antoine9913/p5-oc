@@ -44,7 +44,7 @@ window.onload = () => {
                         <option value="9">9</option>
                         <option value="10">10</option>
                     </select>
-                    <a href="panier.html">
+                    <a href="cart.html">
                     <button type="submit" id="cart" value="submit"> Ajouter au panier </button>
                     <a/>
                     </div>
