@@ -350,8 +350,12 @@ input:invalid {
   }
 
   input:valid {
-    border: 2px solid black;
+    border: 2px solid green;
   }
+
+#sendForm {
+    border: 2px solid #53180a;
+}
 
 #confirm {
     background-color: #eccca7;
