@@ -10,8 +10,9 @@ let addIdBasket = [];
 
 //FONCTION CALCUL PRIX TOTAL DU PANIER ET ENVOIE AU LOCAL STORAGE
 
+let priceCart = 0;
+
 function priceTotalcart(products) {
-    let priceCart = 0;
     priceCart += products.quantity * products.price / 100;
     //AFFICHE PRIX TOTAL DU PANIER // ENVOI AU LOCALSTORAGE
     const totalPrice = document.getElementById('totalPrice').textContent = priceCart + "€";
