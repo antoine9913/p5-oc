@@ -5,15 +5,13 @@ const pickCart = JSON.parse(localStorage.getItem('cart')) ? JSON.parse(localStor
 //EMPLACEMENT DU HTML
 const container = document.getElementById("containerCartBody");
 
-// INITIALISE LE PRIX TOTAL DU PANIER A 0
-let priceCart = 0;
-
 //RECUPERATION ID PRODUIT
 let addIdBasket = [];
 
 //FONCTION CALCUL PRIX TOTAL DU PANIER ET ENVOIE AU LOCAL STORAGE
 
 function priceTotalcart(products) {
+    let priceCart = 0;
     priceCart += products.quantity * products.price / 100;
     //AFFICHE PRIX TOTAL DU PANIER // ENVOI AU LOCALSTORAGE
     const totalPrice = document.getElementById('totalPrice').textContent = priceCart + "€";
@@ -104,7 +102,8 @@ emptyCart.addEventListener('click', deleteBasket);
 
 
 function deleteBasket() {
-    if (pickCart == null) {
+    if (pickCart === null) {
+        return
     } else {
         container.remove();
         localStorage.clear();

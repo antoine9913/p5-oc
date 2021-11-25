@@ -8,6 +8,7 @@ window.onload = () => {
         const product_id = urlParams.get("id");
         return product_id;
     };
+
     const product_id = getIdFromUrl();
 
     //-------------------Emplacement HTML--------------------------------
@@ -75,14 +76,14 @@ window.onload = () => {
         //-----------------------parcourir le panier-------------------------------
         let productsExistInCart = false;
         for (let i = 0; i < cart.length; i++) {
-            let product = cart[i];
+            let cartProduct = cart[i];
             //--------------------------------si un produit existe--------------------------------
-            if (product._id === products._id) {
+            if (cartProduct._id === products._id) {
                 productsExistInCart = i;
             }
         };
         //--------------------------oursons existe dans le panier---------------------------------
-        if (false !== productsExistInCart) {
+        if (productsExistInCart) {
             cart[productsExistInCart].quantity = parseInt(cart[productsExistInCart].quantity) + products.quantity;
         } else {
             cart.push(products);
