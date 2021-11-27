@@ -1,4 +1,8 @@
+// Emplacement HTML
+
 const allProducts = document.getElementById("allproducts");
+
+// inclus HTML
 
 const contentProduct = products => {
     allproducts.innerHTML += `
@@ -13,6 +17,10 @@ const contentProduct = products => {
         </a>
     </article> `
 };
+
+
+// Appel API avec FETCH
+
 
 fetch("http://localhost:3000/api/teddies")
     .then(Response => Response.json())

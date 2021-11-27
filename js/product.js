@@ -91,6 +91,8 @@ window.onload = () => {
         addLocalStorage(cart);
     };
 
+    //Appel API avec FETCH , envoie les données avec la méthode GET "_ID"
+
     fetch("http://localhost:3000/api/teddies/" + product_id,
         {
             method: "GET",
