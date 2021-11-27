@@ -2,6 +2,7 @@
 
 //RECUPERATION DU PANIER DANS LE LOCAL STORAGE 
 const pickCart = JSON.parse(localStorage.getItem('cart')) ? JSON.parse(localStorage.getItem("cart")) : [];
+
 //EMPLACEMENT DU HTML
 const container = document.getElementById("containerCartBody");
 

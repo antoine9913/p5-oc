@@ -1,18 +1,18 @@
 // AFFICHAGE HTML
 function display() {
     //RECUPERATION DES DONNEES DE L URL
-    let paramsUrl = new URL(window.location).searchParams;
+    const paramsUrl = new URL(window.location).searchParams;
 
-    let orderId = paramsUrl.get("orderId");
+    const orderId = paramsUrl.get("orderId");
 
     //RECUPERATION DES DONNEES CONTACT
-    let contact = JSON.parse(localStorage.getItem("contact"));
+    const contact = JSON.parse(localStorage.getItem("contact"));
 
 
     // RECUPERATION DU PRIX TOTAL
-    let totalPrice = JSON.parse(localStorage.getItem("totalPrice"));
+    const totalPrice = JSON.parse(localStorage.getItem("totalPrice"));
 
-    let confirm = document.getElementById("confirm");
+    const confirm = document.getElementById("confirm");
 
     confirm.innerHTML += `
         <p>
