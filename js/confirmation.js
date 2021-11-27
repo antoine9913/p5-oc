@@ -1,15 +1,14 @@
-// AFFICHAGE HTML
+// Affichage HTML
 function display() {
-    //RECUPERATION DES DONNEES DE L URL
+    //Récuperation des données de L URL
     const paramsUrl = new URL(window.location).searchParams;
 
     const orderId = paramsUrl.get("orderId");
 
-    //RECUPERATION DES DONNEES CONTACT
+    //Récupération des données contact
     const contact = JSON.parse(localStorage.getItem("contact"));
 
-
-    // RECUPERATION DU PRIX TOTAL
+    // Récupération du prix total
     const totalPrice = JSON.parse(localStorage.getItem("totalPrice"));
 
     const confirm = document.getElementById("confirm");

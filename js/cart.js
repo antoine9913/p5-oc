@@ -1,26 +1,26 @@
-//// GESTION DU PANIER////
+//// gestion du panier////
 
-//RECUPERATION DU PANIER DANS LE LOCAL STORAGE 
+//récupération du panier dans le local storage
 const pickCart = JSON.parse(localStorage.getItem('cart')) ? JSON.parse(localStorage.getItem("cart")) : [];
 
-//EMPLACEMENT DU HTML
+//Emplacement du html
 const container = document.getElementById("containerCartBody");
 
-//RECUPERATION ID PRODUIT
+//Récupération ID produit
 let addIdBasket = [];
 
-//FONCTION CALCUL PRIX TOTAL DU PANIER ET ENVOIE AU LOCAL STORAGE
+//fonction calcul prix total du panier et envoie au local storage
 
 let priceCart = 0;
 
 function priceTotalcart(products) {
     priceCart += products.quantity * products.price / 100;
-    //AFFICHE PRIX TOTAL DU PANIER // ENVOI AU LOCALSTORAGE
+    //Affiche prix total du panier // Envoi au localstorage
     const totalPrice = document.getElementById('totalPrice').textContent = priceCart + "€";
     localStorage.setItem('totalPrice', JSON.stringify(totalPrice));
 };
 
-//BOUCLE SUR LE PANIER
+//boucle sur le panier
 
 pickCart.forEach((products, i) => {
     container.innerHTML += `
@@ -34,18 +34,18 @@ pickCart.forEach((products, i) => {
         <td><a href="#" class="deleteLineBears" data-id="${i}"> <i class="fas fa-trash-alt"></i></a></td>
     </tr>
     `
-    //APPEL FONCTION
+    //Appel de la fonction
 
     priceTotalcart(products);
 
-    // BOUCLE INCREMENT ID PRODUIT
+    // Boucle increment ID produit
 
     for (let i = 0; i < products.quantity; i++) {
         addIdBasket.push(products._id);
     }
 });
 
-// AJOUTER 1 PRODUIT DU PANIER
+// Ajoute 1 produit du panier
 
 function addBears(id) {
     const products = pickCart[id];
@@ -62,7 +62,7 @@ document.querySelectorAll('.addBears').forEach(delBtn => {
     delBtn.addEventListener('click', () => addBears(delBtn.dataset.id))
 });
 
-// ENLEVER 1 PRODUIT DU PANIER
+// Enlever 1 produit du panier
 
 function deleteBears(id) {
     const products = pickCart[id];
@@ -79,7 +79,7 @@ document.querySelectorAll('.deleteBears').forEach(delBtn => {
     delBtn.addEventListener('click', () => deleteBears(delBtn.dataset.id))
 });
 
-// SUPPRIMER 1 PRODUIT DU PANIER
+// Supprime 1 produit du panier
 
 function deleteLineBears(e, pickCart) {
     const index = e.target.classList[1].slice(-1);
@@ -97,7 +97,7 @@ document.querySelectorAll(".deleteLineBears").forEach((btn) => {
 });
 
 
-//FONCTION SUPPRIME TOUT LE PANIER
+//Fonction supprime tout le panier
 
 const emptyCart = document.getElementById('emptyCart')
 emptyCart.addEventListener('click', deleteBasket);
@@ -113,7 +113,7 @@ function deleteBasket() {
     }
 };
 
-//// GESTION DU FORMULAIRE ////
+//// Gestion du formulaire ////
 
 function sendOrder() {
     const form = document.getElementById("form");
@@ -133,7 +133,7 @@ function sendOrder() {
             products,
         });
 
-        // APEL API AVEC FETCH // ENVOIE DES DONNEES AVEC POST 
+        // Appel API avec FETCH // Envoie des données avec POST 
         fetch('http://localhost:3000/api/teddies/order', {
             method: 'POST',
             headers: {
@@ -149,7 +149,7 @@ function sendOrder() {
                 localStorage.setItem("contact", JSON.stringify(r.contact));
                 window.location.assign("confirmation.html?orderId=" + r.orderId);
             })
-            //SI PROBLEME API
+            //Si probleme API
             .catch(function (err) {
                 console.log("fetch Error");
             });
